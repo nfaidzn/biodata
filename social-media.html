@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <style>
+  body {
+    overflow-x: hidden;
+  }
+
+  .bg-decor {
+    position: absolute;
+    top: -50px;
+    right: -80px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #007bff55, transparent);
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+    border-radius: 50%;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .social-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .social-card:nth-child(1) { animation-delay: 0.1s; }
+  .social-card:nth-child(2) { animation-delay: 0.2s; }
+  .social-card:nth-child(3) { animation-delay: 0.3s; }
+  .social-card:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSocial Media - Devid Faidzin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .social-section {
+      padding: 60px 20px;
+      background-color: #f0f8ff;
+      text-align: center;
+    }
+
+    .social-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    .social-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .social-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .social-card img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 15px;
+    }
+
+    .social-card h3 {
+      margin: 10px 0 5px;
+      color: #007BFF;
+    }
+
+    .social-card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+    <div class="bg-decor"></div>
+
+  <header>
+    <nav>
+      <h1>Devid Faidzin</h1>
+      <ul class="nav-links">
+        <li><a href="index.html#beranda">Home</a></li>
+        <li><a href="index.html#tentang">About</a></li>
+        <li><a href="index.html#portofolio">Project</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#kontak">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="social-section">
+    <section class="section light">
+<section class="section light">
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+<h2 style="
+  font-size: 1.8em;
+  font-style: italic;
+  color: #007BFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+">
+  "Being online isn't just about presence—it's about purpose."
+</h2>
+
+    </h2>
+    <p style="font-size: 1.1em; color: #444; margin-top: 15px;">
+      Every digital platform is a bridge. A bridge to share ideas, to inspire, to collaborate, and to build lasting impressions.  
+      By connecting through social media, we’re not just exchanging likes or follows—we’re building a network of creativity, authenticity, and opportunity.
+    </p>
+    <p style="font-size: 1.1em; color: #444; margin-top: 10px;">
+      Let this space be more than just a list of links. Let it be an open door to interaction, innovation, and human connection—one post, one project, one conversation at a time.
+    </p>
+  </div>
+</section>
+
+</section>
+
+    <h2>Find Me on Social Media</h2>
+    <p>Here are my official accounts on various digital platforms.</p>
+
+    <div class="social-grid">
+      <a href="https://instagram.com/nfaidzn" target="_blank" class="social-card">
+        <img src="images/instagram.jpg" alt="Instagram" />
+        <h3>Instagram</h3>
+        <p>@nfaidzn</p>
+      </a>
+      <a href="https://telegram.me/feykaz" target="_blank" class="social-card">
+        <img src="images/telegram.jpg" alt="telegram" />
+        <h3>Telegram</h3>
+        <p>Feykaz</p>
+      </a>
+      <a href="https://tiktok.com/@nfaidzn" target="_blank" class="social-card">
+        <img src="images/tiktok.jpg" alt="TikTok" />
+        <h3>TikTok</h3>
+        <p>@nfaidzn</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Devid Faidzin.</p>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

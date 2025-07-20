@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery Project - Devid Faidzin</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+    }
+
+    /* Navbar - sama seperti index.html */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    nav h1 a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #007BFF;
+    }
+
+    /* Gallery Hero Section */
+    .gallery-hero {
+      background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      color: white;
+      padding: 120px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .gallery-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .gallery-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .gallery-hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 25px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Project Gallery */
+    .project-gallery {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5em;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Category Filter */
+    .category-filter {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      background: white;
+      color: #333;
+      text-decoration: none;
+      border-radius: 25px;
+      border: 2px solid #ddd;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, #007BFF, #0056b3);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+
+    /* Project Grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .project-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    }
+
+    .project-info {
+      padding: 25px;
+      position: relative;
+    }
+
+    .project-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .project-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tech-tag {
+      background: linear-gradient(135deg, #007BFF, #0056b3);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .project-link {
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.9em;
+    }
+
+    .primary-link {
+      background: #007BFF;
+      color: white;
+    }
+
+    .primary-link:hover {
+      background: #0056b3;
+      transform: translateY(-1px);
+    }
+
+    .secondary-link {
+      background: #f8f9fa;
+      color: #007BFF;
+      border: 1px solid #007BFF;
+    }
+
+    .secondary-link:hover {
+      background: #007BFF;
+      color: white;
+    }
+
+    /* Background images for projects - sama seperti index.html */
+    #project1 { background-image: url('images/olsop.jpg'); }
+    #project2 { background-image: url('images/edit.jpg'); }
+    #project3 { background-image: url('images/sosmed.jpg'); }
+    #project4 { background-image: linear-gradient(135deg, #007BFF, #0056b3); }
+    #project5 { background-image: linear-gradient(135deg, #0056b3, #007BFF); }
+    #project6 { background-image: linear-gradient(135deg, #007BFF, #004494); }
+
+    /* Footer - Updated to match blue theme */
+    footer {
+      background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    footer p {
+      position: relative;
+      z-index: 2;
+      font-size: 1.1em;
+      font-weight: 500;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9em;
+      }
+      
+      .gallery-hero h1 {
+        font-size: 2.2em;
+      }
+      
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .category-filter {
+        gap: 10px;
+      }
+      
+      .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+      }
+
+      nav {
+        padding: 1rem 3%;
+      }
+
+      .gallery-hero {
+        padding: 100px 15px 60px;
+      }
+
+      .project-gallery {
+        padding: 60px 15px;
+      }
+
+      footer {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 0.5rem;
+        font-size: 0.8em;
+      }
+
+      nav h1 {
+        font-size: 1.2rem;
+      }
+
+      .gallery-hero h1 {
+        font-size: 1.8em;
+      }
+
+      .gallery-hero p {
+        font-size: 1em;
+      }
+
+      footer p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <h1><a href="index.html">Devid Faidzin</a></h1>
+      <ul class="nav-links">
+        <li><a href="index.html#beranda">Home Page</a></li>
+        <li><a href="index.html#tentang">About</a></li>
+        <li><a href="gallery-project.html" class="active">Project</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#kontak">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Gallery Hero Section -->
+  <section class="gallery-hero">
+    <div class="gallery-hero-content">
+      <h1>My Project Gallery (PROGRESS) </h1>
+      <p>Explore my collection of web development, design, and creative projects. Each piece represents my passion for creating meaningful digital experiences.</p>
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </section>
+
+  <!-- Project Gallery -->
+  <section class="project-gallery">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">
+      Here's a showcase of my recent work spanning web development, UI/UX design, and creative editing projects.
+    </p>
+
+    <!-- Category Filter -->
+    <div class="category-filter">
+      <a href="#" class="filter-btn active" data-filter="all">All Projects</a>
+      <a href="#" class="filter-btn" data-filter="web">Web Development</a>
+      <a href="#" class="filter-btn" data-filter="design">UI/UX Design</a>
+      <a href="#" class="filter-btn" data-filter="editing">Editing</a>
+    </div>
+
+    <!-- Project Grid -->
+    <div class="project-grid">
+      <!-- Online Store Project -->
+      <div class="project-card" data-category="web">
+        <div class="project-image" id="project1"></div>
+        <div class="project-info">
+          <h3 class="project-title">Online Store Platform</h3>
+          <p class="project-description">
+            Modern e-commerce platform built with PHP and MySQL. Features include product catalog, shopping cart, user authentication, and admin dashboard with complete inventory management.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">HTML/CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="online-store.html" class="project-link primary-link">View Project</a>
+            <a href="#" class="project-link secondary-link">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Editing Project -->
+      <div class="project-card" data-category="editing">
+        <div class="project-image" id="project2"></div>
+        <div class="project-info">
+          <h3 class="project-title">Video Editing Portfolio</h3>
+          <p class="project-description">
+            Professional video editing services including promotional videos, social media content, and cinematic storytelling using industry-standard editing software and techniques.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">CapCut</span>
+            <span class="tech-tag">DaVinci Resolve</span>
+            <span class="tech-tag">Alight Motion</span>
+            <span class="tech-tag">Lightroom</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link primary-link">View Portfolio</a>
+            <a href="#" class="project-link secondary-link">Request Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media Project -->
+      <div class="project-card" data-category="design">
+        <div class="project-image" id="project3"></div>
+        <div class="project-info">
+          <h3 class="project-title">Social Media Hub</h3>
+          <p class="project-description">
+            Centralized social media presence with consistent branding across platforms. Features link management, contact integration, and responsive design for all devices.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">HTML/CSS</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive Design</span>
+            <span class="tech-tag">UI/UX</span>
+          </div>
+          <div class="project-links">
+            <a href="social-media.html" class="project-link primary-link">View Project</a>
+            <a href="#" class="project-link secondary-link">Follow Me</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Web Application Project -->
+      <div class="project-card" data-category="web">
+        <div class="project-image" id="project4"></div>
+        <div class="project-info">
+          <h3 class="project-title">Web Application Dashboard</h3>
+          <p class="project-description">
+            Responsive web application with modern dashboard interface. Built with clean code architecture and user-friendly navigation system for optimal user experience.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link primary-link">View Project</a>
+            <a href="#" class="project-link secondary-link">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- UI/UX Design Project -->
+      <div class="project-card" data-category="design">
+        <div class="project-image" id="project5"></div>
+        <div class="project-info">
+          <h3 class="project-title">Mobile App UI Design</h3>
+          <p class="project-description">
+            Intuitive mobile application interface design with focus on usability and modern design principles. Complete with user flow analysis and interactive prototypes.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">UI Design</span>
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">User Flow</span>
+            <span class="tech-tag">Prototyping</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link primary-link">View Design</a>
+            <a href="#" class="project-link secondary-link">Prototype</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand Identity Project -->
+      <div class="project-card" data-category="design">
+        <div class="project-image" id="project6"></div>
+        <div class="project-info">
+          <h3 class="project-title">Brand Identity Design</h3>
+          <p class="project-description">
+            Complete brand identity package including logo design, color schemes, typography selection, and comprehensive brand guidelines for consistent visual communication.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Logo Design</span>
+            <span class="tech-tag">Branding</span>
+            <span class="tech-tag">Typography</span>
+            <span class="tech-tag">Color Theory</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link primary-link">View Brand</a>
+            <a href="#" class="project-link secondary-link">Guidelines</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="year"></span> Devid Nur Faidzin.</p>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Project filtering functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Get filter category
+        const filterValue = button.getAttribute('data-filter');
+        
+        // Filter projects with animation
+        projectCards.forEach((card, index) => {
+          setTimeout(() => {
+            if (filterValue === 'all') {
+              card.style.display = 'block';
+              card.style.animation = 'fadeInUp 0.6s ease forwards';
+            } else {
+              const cardCategory = card.getAttribute('data-category');
+              if (cardCategory === filterValue) {
+                card.style.display = 'block';
+                card.style.animation = 'fadeInUp 0.6s ease forwards';
+              } else {
+                card.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(() => {
+                  card.style.display = 'none';
+                }, 300);
+              }
+            }
+          }, index * 100);
+        });
+      });
+    });
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInUp {
+        from { 
+          opacity: 0; 
+          transform: translateY(30px); 
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+      
+      @keyframes fadeOut {
+        from { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+        to { 
+          opacity: 0; 
+          transform: translateY(-20px); 
+        }
+      }
+      
+      .project-card {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+      }
+    });
+  </script>
+</body>
+</html>

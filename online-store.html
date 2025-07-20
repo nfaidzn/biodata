@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Store - Devid Faidzin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Devid Faidzin</h1>
+      <ul class="nav-links">
+        <li><a href="index.html#beranda">Home</a></li>
+        <li><a href="index.html#tentang">About</a></li>
+        <li><a href="index.html#portofolio">Project</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#kontak">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Online Store Project</h2>
+      <p>Explore our store in various marketplaces.</p>
+    </div>
+  </section>
+
+  <!-- Section Baru -->
+  <section class="section">
+    <h2>Our Online Presence</h2>
+    <p>We are actively expanding our digital footprint across multiple e-commerce platforms to provide seamless shopping experiences. Below are our official store links.</p>
+  </section>
+
+  <!-- Marketplace Menu -->
+<section class="section light">
+  <h2>Marketplace Links</h2>
+  <div class="cards">
+    <a href="https://shopee.co.id" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+      <img src="images/shopee.png" alt="Shopee" class="market-img">
+      <h3>Shopee</h3>
+      <p>Visit our store on Shopee.</p>
+    </a>
+    <a href="https://tokopedia.com" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+      <img src="images/tokopedia.png" alt="Tokopedia" class="market-img">
+      <h3>Tokopedia</h3>
+      <p>Visit our store on Tokopedia.</p>
+    </a>
+    <a href="https://www.tiktok.com/shop" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+      <img src="images/tiktok.png" alt="TikTok Shop" class="market-img">
+      <h3>TikTok Shop</h3>
+      <p>Visit our store on TikTok Shop.</p>
+    </a>
+    <a href="https://www.lazada.co.id" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+      <img src="images/lazada.png" alt="Lazada" class="market-img">
+      <h3>Lazada</h3>
+      <p>Visit our store on Lazada.</p>
+    </a>
+  </div>
+</section>
+
+
+  <footer>
+    <p>&copy; <span id="year"></span> Devid Nur Faidzin.</p>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

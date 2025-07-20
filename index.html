@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Devid Faidzin</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <style>
+    /* Styling untuk background card */
+    .card {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 300px;
+      height: 300px;
+      /* Tambahan untuk memusatkan teks */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    /* Perbaikan warna teks agar lebih jelas */
+    .card h3 {
+      color: #ffffff;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin-bottom: 10px;
+    }
+    
+    .card p {
+      color: #ffffff;
+      font-size: 1em;
+      font-weight: 500;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      padding: 0 15px;
+    }
+    
+    /* Background untuk setiap card */
+    #card1 {
+      background-image: url('images/olsop.jpg');
+    }
+    
+    #card2 {
+      background-image: url('images/edit.jpg');
+    }
+    
+    #card3 {
+      background-image: url('images/sosmed.jpg');
+    }
+
+    /* Social Media Links Styling */
+    .social-media-section {
+      text-align: center;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      color: #333;
+      width: 100px;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    
+    .social-link img {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 8px;
+      border-radius: 50%;
+    }
+    
+    .social-link span {
+      font-size: 0.85em;
+      font-weight: 500;
+      color: #007BFF;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px; /* Jarak yang lumayan dekat antar card */
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <h1>Devid Faidzin</h1>
+      <ul class="nav-links">
+        <li><a href="#beranda">Home Page</a></li>
+        <li><a href="#tentang">About</a></li>
+        <li><a href="#portofolio">Project</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#kontak">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="beranda" class="hero">
+    <div class="hero-text">
+      <h2>haloo, i'm <span>Devid Faidzin</span></h2>
+      <p>Web Developer | UI/UX Designer | Freelancer</p>
+      <a href="gallery-project.html" class="btn">Gallery Project</a>
+    </div>
+  </section>
+
+  <!-- Tentang -->
+<section id="about" class="section light">
+  <h2>About Me</h2>
+  <div class="about-container">
+    <p class="about-text">
+      Hello! I'm <strong>Devid Faidzin</strong>, a passionate <span class="highlight">Web Developer</span>,
+      <span class="highlight">UI/UX Designer</span>, and <span class="highlight">Freelancer</span> with a love for building digital experiences that connect people and ideas.
+    </p>
+    <p class="about-text">
+      I specialize in crafting modern websites with clean, responsive design and intuitive user experiences. 
+      Whether it's building an eCommerce platform, designing engaging social media pages, or editing content, 
+      I always strive to bring creativity and functionality together.
+    </p>
+    <p class="about-text">
+      Currently open for freelance work — let's collaborate and bring your vision to life.
+    </p>
+  </div>
+</section>
+
+
+  <!-- Portofolio -->
+  <section id="portofolio" class="section">
+    <h2 style="margin-bottom: 40px;">My Project</h2>
+    <div class="cards">
+ <a href="online-store.html" class="card" id="card1" style="text-decoration: none; color: inherit;">
+  <h3>Online Store</h3>
+  <p>Build a modern online store with PHP & MySQL.</p>
+</a>
+      <div class="card" id="card2">
+        <h3>Editing</h3>
+        <p>All Editing Categories.</p>
+      </div>
+      <div class="card" id="card3">
+  <a href="social-media.html" style="text-decoration: none; color: inherit;">
+  <h3>Media Sosial List</h3>
+  <p>Link ke semua akun media sosial aktif saya.</p>
+</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+<section id="skills" class="section light">
+  <h2>Skills</h2>
+  <ul class="skills-list">
+    <li>HTML, CSS, JavaScript</li>
+    <li>PHP, MySQL</li>
+    <li>Capcut, Alight Motion, Davinci, Lightroom</li>
+    <li>UI/UX Design</li>
+    <li>Git & GitHub</li>
+  </ul>
+</section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="section">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" id="nama" placeholder="Nama" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <textarea id="pesan" placeholder="Pesan kamu..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    
+    <!-- Social Media Links -->
+    <div class="social-media-section" style="margin-top: 40px;">
+      <h3 style="margin-bottom: 20px; color: #333;">Follow Me on Social Media</h3>
+      <div class="social-links">
+        <a href="https://instagram.com/nfaidzn" target="_blank" class="social-link">
+          <img src="images/instagram.jpg" alt="Instagram" />
+          <span>Instagram</span>
+        </a>
+        <a href="https://telegram.me/feykaz" target="_blank" class="social-link">
+          <img src="images/telegram.jpg" alt="Telegram" />
+          <span>Telegram</span>
+        </a>
+        <a href="https://tiktok.com/@nfaidzn" target="_blank" class="social-link">
+          <img src="images/tiktok.jpg" alt="TikTok" />
+          <span>TikTok</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="year"></span> Devid Nur Faidzin.</p>
+  </footer>
+
+  <script>
+    // Background images sudah di-hardcode di CSS
+    // Tidak ada script upload yang diperlukan
+    
+    // Handle contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nama = document.getElementById('nama').value;
+      const email = document.getElementById('email').value;
+      const pesan = document.getElementById('pesan').value;
+      
+      // Format email content
+      const subject = `Pesan dari ${nama} - Portfolio Website`;
+      const body = `Nama: ${nama}%0D%0AEmail: ${email}%0D%0A%0D%0APesan:%0D%0A${pesan}`;
+      
+      // Create mailto link
+      const mailtoLink = `mailto:nfaidzn@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Reset form
+      this.reset();
+      
+      // Show confirmation
+      alert('Email client akan terbuka. Silakan kirim email dari aplikasi email Anda.');
+    });
+  </script>
+</body>
+</html>
